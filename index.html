@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore 757 Regions</title>
+    <!-- Tailwind CSS CDN for professional and responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Gradient text for titles */
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center p-4">
+
+    <!-- Main application container where content will be rendered -->
+    <div id="app-root" class="w-full max-w-4xl">
+        <!-- Content will be dynamically loaded here by JavaScript -->
+    </div>
+
+    <script>
+        // Data for the buttons and their corresponding page content
+        // This array holds the original, unsorted order of the buttons.
+        const originalButtonData = [
+            { id: 'btn1', title: 'Norfolk', description: 'The vibrant urban core of Hampton Roads, home to Naval Station Norfolk and a thriving arts scene.' },
+            { id: 'btn2', title: 'Virginia Beach', description: 'Known for its extensive beaches, resort strip, and diverse coastal attractions.' },
+            { id: 'btn3', title: 'Chesapeake', description: 'A large city characterized by its blend of urban, suburban, and rural areas, including parts of the Great Dismal Swamp.' },
+            { id: 'btn4', title: 'Newport News', description: 'A city rich in maritime history and shipbuilding, featuring the Newport News Shipbuilding yard.' },
+            { id: 'btn5', title: 'Hampton', description: 'A historic city with deep roots in American history, including Fort Monroe and NASA Langley Research Center.' },
+            { id: 'btn6', title: 'Suffolk', description: 'Virginia\'s largest city by land area, known for its agricultural heritage and the famous Planters Peanuts.' },
+            { id: 'btn7', title: 'Portsmouth', description: 'A historic waterfront city across from Norfolk, home to the Norfolk Naval Shipyard and a charming old town.' },
+        ];
+
+        // This array will hold the current order of buttons, which can be sorted.
+        let currentButtonData = [...originalButtonData];
+        // State variable to track the current page being displayed ('main' or a button ID).
+        let currentPage = 'main';
+        // State variable to track whether the buttons are currently sorted alphabetically.
+        let isSorted = false;
+
+        /**
+         * Renders the entire application UI based on the current state.
+         * This function acts as the central rendering mechanism for the single-page application.
+         */
+        function render() {
+            const appContainer = document.getElementById('app-root');
+            // Clear any existing content in the app container before rendering new content.
+            appContainer.innerHTML = '';
+
+            // Check if the current page is the main page.
+            if (currentPage === 'main') {
+                // Create the main content div with professional styling.
+                const mainContentDiv = document.createElement('div');
+                mainContentDiv.className = 'bg-gray-700 p-8 rounded-xl shadow-2xl w-full text-center';
+
+                // Create and append the main title.
+                const title = document.createElement('h1');
+                title.className = 'text-5xl font-extrabold mb-8 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600';
+                title.textContent = 'Explore 757 Regions';
+
+                // Create and append the descriptive paragraph.
+                const description = document.createElement('p');
+                description.className = 'text-lg text-gray-300 mb-10 max-w-2xl mx-auto';
+                description.textContent = 'Discover key cities and regions within the 757 area code. Use the filter to organize your exploration.';
+
+                // Create the filter button.
+                const filterButton = document.createElement('button');
+                filterButton.className = 'mb-8 px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-teal-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50';
+                filterButton.textContent = isSorted ? 'Turn Off Alphabetical Sort' : 'Sort Buttons Alphabetically';
+                // Add event listener to toggle sorting and re-render.
+                filterButton.onclick = () => {
+                    isSorted = !isSorted; // Toggle the sorting state
+                    if (isSorted) {
+                        // If sorting is on, sort the currentButtonData alphabetically by title.
+                        currentButtonData.sort((a, b) => a.title.localeCompare(b.title));
+                    } else {
+                        // If sorting is off, reset currentButtonData to the original order.
+                        currentButtonData = [...originalButtonData];
+                    }
+                    render(); // Re-render the page to reflect the new order.
+                };
+
+                // Create a grid container for the buttons.
+                const buttonsGrid = document.createElement('div');
+                buttonsGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+                // Iterate over the current button data and create a button for each.
+                currentButtonData.forEach(button => {
+                    const btnElement = document.createElement('button');
+                    btnElement.className = 'p-6 bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-600 hover:border-purple-500 text-xl font-bold text-left flex flex-col justify-between items-start focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50';
+                    // Add event listener to navigate to the corresponding detail page.
+                    btnElement.onclick = () => {
+                        currentPage = button.id; // Set the current page to the clicked button's ID.
+                        render(); // Re-render the application to show the detail page.
+                    };
+
+                    // Create an inline SVG for the icon (simple right arrow).
+                    const iconSpan = document.createElement('span');
+                    iconSpan.className = 'text-purple-300 mb-2';
+                    iconSpan.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    `;
+
+                    // Append the icon and the button title to the button element.
+                    btnElement.appendChild(iconSpan);
+                    btnElement.appendChild(document.createTextNode(button.title));
+
+                    // Append the button to the grid.
+                    buttonsGrid.appendChild(btnElement);
+                });
+
+                // Append all elements to the main content div.
+                mainContentDiv.appendChild(title);
+                mainContentDiv.appendChild(description);
+                mainContentDiv.appendChild(filterButton);
+                mainContentDiv.appendChild(buttonsGrid);
+                // Append the main content div to the app container.
+                appContainer.appendChild(mainContentDiv);
+
+            } else {
+                // If not on the main page, render a specific content page.
+                // Find the selected button's data from the original (unmodified) data.
+                const selectedButton = originalButtonData.find(button => button.id === currentPage);
+
+                // Create the detail content div.
+                const detailContentDiv = document.createElement('div');
+                detailContentDiv.className = 'bg-gray-700 p-8 rounded-xl shadow-2xl w-full text-center';
+
+                // Create and append the title of the detail page.
+                const title = document.createElement('h1');
+                title.className = 'text-5xl font-extrabold mb-8 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600';
+                title.textContent = selectedButton ? selectedButton.title : 'Page Not Found';
+
+                // Create and append the description for the detail page.
+                const description = document.createElement('p');
+                description.className = 'text-lg text-gray-300 mb-10 max-w-2xl mx-auto';
+                description.textContent = selectedButton ? selectedButton.description : 'The content you are looking for does not exist.';
+
+                // Create the "Back to Main Page" button.
+                const backButton = document.createElement('button');
+                backButton.className = 'px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50';
+                backButton.textContent = 'Back to Main Page';
+                // Add event listener to return to the main page.
+                backButton.onclick = () => {
+                    currentPage = 'main'; // Set the current page back to 'main'.
+                    render(); // Re-render the application to show the main page.
+                };
+
+                // Append all elements to the detail content div.
+                detailContentDiv.appendChild(title);
+                detailContentDiv.appendChild(description);
+                detailContentDiv.appendChild(backButton);
+                // Append the detail content div to the app container.
+                appContainer.appendChild(detailContentDiv);
+            }
+        }
+
+        // Initial render when the DOM is fully loaded.
+        // This ensures that all HTML elements are available before the script tries to manipulate them.
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+        });
+    </script>
+</body>
+</html>
