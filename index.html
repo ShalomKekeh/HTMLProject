@@ -85,7 +85,7 @@
             { id: 'btn5', title: 'Hampton', description: 'A historic city with deep roots in American history, including Fort Monroe and NASA Langley Research Center.' },
             { id: 'btn6', title: 'Suffolk', description: 'Virginia\'s largest city by land area, known for its agricultural heritage and the famous Planters Peanuts.' },
             { id: 'btn7', title: 'Portsmouth', description: 'A historic waterfront city across from Norfolk, home to the Norfolk Naval Shipyard and a charming old town.' },
-            { id: 'btn8', title: 'Western Tidewater', description: 'Comprising Isle of Wight County, Southampton County, the City of Franklin, and the City of Suffolk, this region is known for its rich agricultural landscape, forestry, and small-town charm.' }, // Added Western Tidewater
+            { id: 'btn8', title: 'Western Tidewater', description: 'Comprising Isle of Wight County, Southampton County, the City of Franklin, and the City of Suffolk, this region is known for its rich agricultural landscape, forestry, and small-town charm.' },
         ];
 
         let currentButtonData = [...originalButtonData];
@@ -227,61 +227,459 @@
                     socialMedia: {}
                 }
             ],
-            // Existing categories below will have their pointsOfContact removed if they existed.
             'Mental Health': [
                 {
-                    name: 'Chesapeake Integrated Behavioral Healthcare (CIBH)',
-                    website: 'https://www.cityofchesapeake.net/government/city-departments/human-services/behavioral-healthcare.htm',
-                    services: 'Comprehensive mental health, substance abuse, and intellectual disability services.',
-                    generalType: 'Government Department',
-                    populationType: 'All Chesapeake residents',
-                    email: 'cibh@cityofchesapeake.net',
-                    phone: '(757) 547-9334',
-                    address: '224 Great Bridge Blvd, Chesapeake, VA 23320',
-                    socialMedia: {},
-                    pointsOfContact: [] // Removed
+                    name: 'Whole Journey Services',
+                    website: 'https://wholejourneywellness.com/',
+                    services: 'counseling, emotional challenging, work and career issues, trauma, grief and loss, women issues, men issues, LGBTQIA+ issues, people of color issues, life transition',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: 'info@wholejourneywellness.com',
+                    phone: '7579063896',
+                    address: '1736 South Park Court, Suite 201 Chesapeake, VA 23320',
+                    socialMedia: {}
                 },
                 {
-                    name: 'Family & Youth Foundations of Virginia',
-                    website: 'https://www.fyfov.org/',
-                    services: 'Provides outpatient mental health services, intensive in-home services, and therapeutic foster care for children, adolescents, and adults.',
-                    generalType: 'Private/Non-profit Organization',
-                    populationType: 'Children, adolescents, adults, families',
-                    email: 'info@fyfov.org',
-                    phone: '(757) 420-5693',
-                    address: '500 Viking Dr Suite 210, Virginia Beach, VA 23452 (serves Chesapeake)',
-                    socialMedia: {
-                        facebook: 'https://facebook.com/FamilyYouthFoundations'
-                    },
-                    pointsOfContact: [] // Removed
+                    name: 'Thriveworks Counseling and Psychiatry Chesapeake',
+                    website: 'https://thriveworks.com/chesapeake-counseling/?utm_source=GMBlisting&utm_medium=organic&field:8499441=GMB',
+                    services: 'counseling, psychiatry care',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7572109381',
+                    address: '3804 Poplar Hill Rd Ste D, Chesapeake, VA 23321',
+                    socialMedia: {}
                 },
                 {
-                    name: 'Dominion Diagnostics',
-                    website: 'https://www.domdx.com/',
-                    services: 'Offers comprehensive drug testing and lab services for behavioral health, pain management, and addiction treatment.',
-                    generalType: 'Private Company',
-                    populationType: 'Healthcare providers, patients',
-                    email: 'info@domdx.com',
-                    phone: '(866) 450-4828',
-                    address: '2118 Dabney Dr, Richmond, VA 23230 (main office, offers services regionally)',
-                    socialMedia: {
-                        linkedin: 'https://www.linkedin.com/company/dominion-diagnostics/'
-                    },
-                    pointsOfContact: [] // Removed
+                    name: 'Genesis Counseling Center',
+                    website: 'https://genesiscounselingcenter.com/',
+                    services: 'counseling',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7579655886',
+                    address: '638 Independence Pkwy #240, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Coastal Counseling Center of Virginia',
+                    website: 'https://coastalcounselingcenter.com/',
+                    services: 'counseling',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574360605',
+                    address: '809 Kent Pl, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'All About You Residential Care',
+                    website: 'http://www.allaboutyourc.com/',
+                    services: 'inpatient and outpatient health assistant living',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7575494663',
+                    address: '2010 Old Greenbrier Rd Suite A, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'South Chesapeake Psychiatry',
+                    website: 'https://southchesapeakepsychiatry.com/',
+                    services: 'psychiatry treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7579082124',
+                    address: '200 Carmichael Way #604, Chesapeake, VA 23322',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Alpha Psychiatric services LLC',
+                    website: 'https://www.alphapsychservices.com/',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574135444',
+                    address: '2010 Old Greenbrier Rd Suite J, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'CHAT Behavioral Health Services',
+                    website: 'http://www.chatbhs.com/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574365601',
+                    address: '1228 Progressive Dr #201, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Coastal Counseling Center of Virginia',
+                    website: 'https://coastalcounselingcenter.com/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574360605',
+                    address: '809 Kent Pl, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Cognitive Behavior Therapy Center',
+                    website: 'http://www.mycbtcenter.com/',
+                    services: 'therapy, chonic pain and illness, medical and forensic evaluations',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574100700',
+                    address: '1403 Greenbrier Pkwy Suite 215, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Chesapeake Counseling Center',
+                    website: 'http://www.chesapeakecounselingcenter.com/',
+                    services: 'individual counseling services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7573028362',
+                    address: '501 Cedar Rd #2a, Chesapeake, VA 23322',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Gateway Services',
+                    website: 'https://gatewayworks.com/locations/',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7579700353',
+                    address: '676 Independence Pkwy, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Live in Live Community Service',
+                    website: 'http://www.liveinlovecs.com/',
+                    services: 'in-home counseling services to kids and families with kids',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone/kids and families with kids',
+                    email: '',
+                    phone: '7576557558',
+                    address: '2211 B, S Military Hwy, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Recovery Journal',
+                    website: 'http://recoveryjournalllc.com/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'substance abuse related',
+                    email: 'support@recoveryjournalllc.com',
+                    phone: '7576060086',
+                    address: '752 Cedar Rd suite 107, Chesapeake, VA 23322',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Sequoia Psychiatry',
+                    website: 'http://www.psychwellnessnow.com/',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7575243887',
+                    address: '809 Greenbrier Pkwy Unit 111, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Fishing Point Behavioral Health',
+                    website: 'https://www.fishingpointbh.com/',
+                    services: 'therapy, mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7572285635',
+                    address: '2006 Old Greenbrier Rd Suite 12, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Comprehensive Psychological Services',
+                    website: 'https://www.comppsychservices.net/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7575479007',
+                    address: '2117 smith Ave B, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Intercept health',
+                    website: 'https://www.intercepthealth.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=12354058548101801764',
+                    services: 'address substance use disorders, and assistance with adjusting to foster care home',
+                    generalType: 'Mental Health',
+                    populationType: 'kids and families with kids',
+                    email: '',
+                    phone: '7572960900',
+                    address: '325 Volvo Pkwy, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Aligning Paths Mental Health Services',
+                    website: 'https://www.apmhs.net/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7579372700',
+                    address: '640 Independence Pkwy # 300, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Stepping Stone Behavior Health',
+                    website: 'https://www.steppingstonebh.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=6204936309506855967',
+                    services: 'therapy treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7577736130',
+                    address: '308 George Washington Hwy N # 2, Chesapeake, VA 23323',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Churchland Psychiatric Associates',
+                    website: 'http://www.churchlandpsych.com/',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574836404',
+                    address: '4041 Taylor Rd, Chesapeake, VA 23321',
+                    socialMedia: {}
+                },
+                {
+                    name: 'In Harmony Wellness IHW LLC',
+                    website: 'http://inharmonywellnessihw.com/',
+                    services: 'mental health services',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7576061377',
+                    address: '4020 Raintree Rd Suite A, Chesapeake, VA 23321',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Roots and Wings Connections',
+                    website: 'https://rootsandwingsconnections.com/',
+                    services: 'therapy (individual and group)',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: 'admin@rootsandwingsconnections.com',
+                    phone: '7577583042',
+                    address: '1403 Greenbrier Pkwy suite 225, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Rawles and Associates, PLC',
+                    website: 'http://rawlespsych.com/',
+                    services: 'psychiatry treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7574932912',
+                    address: '2010 Old Greenbrier Rd Ste. G, Chesapeake VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Behavior Frontires',
+                    website: 'https://www.behaviorfrontiers.com/chesapeake-norfolk-va',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7573786925',
+                    address: '1545 Crossways Blvd Suite 250, Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Chesapeake Bay Psychiatry',
+                    website: 'https://www.chesapeakebaypsych.com/',
+                    services: 'mental health treatment',
+                    generalType: 'Mental Health',
+                    populationType: 'anyone',
+                    email: '',
+                    phone: '7579929600',
+                    address: '1545 Crossways Blvd Suite 250, Chesapeake, VA 23320',
+                    socialMedia: {}
                 }
             ],
             'Chesapeake Health Department': [
                 {
-                    name: 'Chesapeake Health Department',
-                    website: 'https://www.vdh.virginia.gov/chesapeake/',
-                    services: 'Public health services including immunizations, family planning, WIC, environmental health, and disease prevention.',
-                    generalType: 'Government Agency',
-                    populationType: 'All Chesapeake residents',
-                    email: 'chesapeakehd@vdh.virginia.gov',
-                    phone: '(757) 382-8600',
-                    address: '748 Battlefield Blvd N, Chesapeake, VA 23320',
-                    socialMedia: {},
-                    pointsOfContact: [] // Removed
+                    name: 'BabyCare',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/babycare/',
+                    services: 'basic needs for children under 2 and their parents, resources, personal support and experienced care in-home, online (phone and text)',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'expecting mothers, new parents, child care givers with children under the age 2',
+                    email: 'ChesapeakeBabyCare@vdh.virginia.gov',
+                    phone: '7573828652',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Communicable Disease Program',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/community-services-programs/',
+                    services: 'Investigate, follow-up and prevent contagious diseases',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: '',
+                    phone: '7573828655 or 7573828637',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Child Safety Seat Program',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/community-services-programs/',
+                    services: 'family care support group',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'Caregivers of families caring for adults',
+                    email: '',
+                    phone: '7573828652',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Daycare Education and services',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/community-services-programs/',
+                    services: 'spread of infectious disease program and resources for daycares',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'daycare directors and staff',
+                    email: '',
+                    phone: '8045882706',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Health Services',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/health-care-services/',
+                    services: 'appointment for administration of routine recommended immunizations, sexual wellness clinic, physical exams for school entrance, family planning services',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: '',
+                    phone: '7573828631',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Long_Term care Screening (LTSS)',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/ltss-pas/',
+                    services: 'provided resources for Long-term care and assess qualification for long-term care',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: 'Chesapeake.PAS@vdh.virginia.gov',
+                    phone: '7573828705',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'WIC (Women, Infants and Children)',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/wic-women-infants-and-children/',
+                    services: 'provides nutrition education, breastfeeding promotion and support, supplemental nutritious foods, counseling at WIC clinics, and screening and referrals to other health, welfare, and social services',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'Pregnant women, infants and children under 5 years old',
+                    email: '',
+                    phone: '7573828608',
+                    address: '749 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'WIC South Norfolk Satellite Office',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/wic-south-norfolk-office-directions/',
+                    services: 'provides nutrition education, breastfeeding promotion and support, supplemental nutritious foods, counseling at WIC clinics, and screening and referrals to other health, welfare, and social services',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'Pregnant women, infants and children under 5 years old',
+                    email: '',
+                    phone: '7573822651',
+                    address: '490 Liberty Street Suite A Chesapeake VA 23324',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Every Woman\'s Life "EWL" - Breast and Cervical Cancer Program',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/every-womans-life/',
+                    services: 'Free mammograms and PAP tests',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'women',
+                    email: '',
+                    phone: '7573828658 or 7573828710',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Vital Records Services',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/vital-records-services/',
+                    services: 'Provides copies of important legal documents: birth, death, marriage, and divorce certificates',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: 'CHDVitalRec@vdh.virginia.gov',
+                    phone: '7573828677 or 75733822694',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Health Education Seminars',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/community-services-programs/',
+                    services: 'health education training',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: '',
+                    email: '',
+                    phone: '7573828649',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Environmental Health',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/environmental-health/',
+                    services: 'food establishments, campgrounds, summer camps, massage establishments, tattoo/body piercing establishments, tourist establishments, recreational waters, marina program, private wells, onsite sewage systems, rabies control program, and environmental complaints.',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: '',
+                    phone: '7573828672',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Health Fairs',
+                    website: 'https://www.vdh.virginia.gov/chesapeake/community-services-programs/',
+                    services: 'Blood pressure screening, health education',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: '',
+                    email: '',
+                    phone: '7573828649',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Chesapeake Medical Reserve Corps',
+                    website: 'https://www.vdh.virginia.gov/chesapeakemrc/',
+                    services: 'coordinate volunteer opportunities for health care professionals and non healthcare professionals to help with public health emergencies',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: 'ChesapeakeMRC@vdh.virginia.gov',
+                    phone: '7573828719',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
+                },
+                {
+                    name: 'Emergency Preparedness and response',
+                    website: 'https://www.vdh.virginia.gov/chesapeakemrc/epidemiology/',
+                    services: 'planning, preparing and responding to public Health emergencies',
+                    generalType: 'Chesapeake Health Department',
+                    populationType: 'everyone',
+                    email: 'jerry.tucker@vdh.virginia.gov',
+                    phone: '7574352439',
+                    address: '748 North Battlefield Boulevard Chesapeake, VA 23320',
+                    socialMedia: {}
                 }
             ],
             'Behavioral Health': [
@@ -296,8 +694,7 @@
                     address: '789 Recovery St, Chesapeake, VA 23322',
                     socialMedia: {
                         facebook: 'https://facebook.com/RecoveryInnovationsVA'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Food Assistance': [
@@ -310,8 +707,7 @@
                     email: 'foodservices@cps.k12.va.us',
                     phone: '(757) 547-0153',
                     address: '312 Student Way, Chesapeake, VA 23320',
-                    socialMedia: {},
-                    pointsOfContact: [] // Removed
+                    socialMedia: {}
                 },
                 {
                     name: 'Foodbank of Southeastern Virginia and the Eastern Shore',
@@ -325,8 +721,7 @@
                     socialMedia: {
                         facebook: 'https://facebook.com/FoodbankSEVA',
                         instagram: 'https://instagram.com/foodbankseva'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'City of Chesapeake': [
@@ -342,8 +737,7 @@
                     socialMedia: {
                         facebook: 'https://facebook.com/CityofChesapeakeVA',
                         twitter: 'https://twitter.com/ChesapeakeCity'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Nonfood Donations': [
@@ -358,8 +752,7 @@
                     address: 'Various donation centers and stores in Chesapeake (check website for locations)',
                     socialMedia: {
                         facebook: 'https://facebook.com/GoodwillVA'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 },
                 {
                     name: 'Salvation Army Family Store & Donation Center',
@@ -372,8 +765,7 @@
                     address: '4225 Portsmouth Blvd, Chesapeake, VA 23321',
                     socialMedia: {
                         facebook: 'https://facebook.com/SalvationArmyUSA'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Health Facility': [
@@ -388,8 +780,7 @@
                     address: '736 Battlefield Blvd N, Chesapeake, VA 23320',
                     socialMedia: {
                         facebook: 'https://facebook.com/ChesapeakeRegionalMedicalCenter'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 },
                 {
                     name: 'Sentara Greenbrier Healthplex',
@@ -402,8 +793,7 @@
                     address: '1209 Greenbrier Pkwy, Chesapeake, VA 23320',
                     socialMedia: {
                         facebook: 'https://facebook.com/SentaraHealthcare'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Financial Assistance': [
@@ -416,8 +806,7 @@
                     email: 'chesapeake.dss@dss.virginia.gov',
                     phone: '(757) 382-2000',
                     address: '100 Out Of Poverty Lane, Chesapeake, VA 23320',
-                    socialMedia: {},
-                    pointsOfContact: [] // Removed
+                    socialMedia: {}
                 }
             ],
             'Youth Development': [
@@ -433,8 +822,7 @@
                     socialMedia: {
                         facebook: 'https://facebook.com/BGCSouthEastVA',
                         instagram: 'https://instagram.com/bgcseva'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 },
                 {
                     name: 'Chesapeake Public Library - Youth Services',
@@ -447,8 +835,7 @@
                     address: 'Various branch locations in Chesapeake',
                     socialMedia: {
                         facebook: 'https://facebook.com/ChesapeakePublicLibrary'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Disaster Relief': [
@@ -463,8 +850,7 @@
                     address: '6090 Newport Cres, Norfolk, VA 23505 (serves Chesapeake)',
                     socialMedia: {
                         facebook: 'https://facebook.com/RedCrossCoastalVA'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ],
             'Environmental Health': [
@@ -477,8 +863,7 @@
                     email: 'chesapeakehd@vdh.virginia.gov',
                     phone: '(757) 382-8600',
                     address: '748 Battlefield Blvd N, Chesapeake, VA 23320',
-                    socialMedia: {},
-                    pointsOfContact: [] // Removed
+                    socialMedia: {}
                 },
                 {
                     name: 'Elizabeth River Project',
@@ -491,8 +876,7 @@
                     address: '475 Water St, Portsmouth, VA 23704 (serves Chesapeake)',
                     socialMedia: {
                         facebook: 'https://facebook.com/ElizabethRiverProject'
-                    },
-                    pointsOfContact: [] // Removed
+                    }
                 }
             ]
         };
@@ -524,26 +908,12 @@
                     linkedin: 'fab fa-linkedin'
                 }[platform] || 'fas fa-globe';
 
-                return `<a href="${url}" target="_blank" class="text-gray-600 hover:text-blue-700 mr-3"><i class="${icon}"></i> ${platform.charAt(0).toUpperCase() + platform.slice(1)}</a>`; /* PROFESSIONAL REFORMAT: Changed to neutral gray, hover to blue */
+                return `<a href="${url}" target="_blank" class="text-gray-600 hover:text-blue-700 mr-3"><i class="${icon}"></i> ${platform.charAt(0).toUpperCase() + platform.slice(1)}</a>`;
             }).join('');
 
             if (socialMediaLinks) {
                 html += `<p class="mb-4"><strong>Social Media:</strong> ${socialMediaLinks}</p>`;
             }
-
-            // Points of Contact (This entire section is now removed as per instruction)
-            // if (org.pointsOfContact && org.pointsOfContact.length > 0) {
-            //     html += `<h5 class="text-lg font-semibold text-gray-700 mb-2">Points of Contact:</h5>`;
-            //     org.pointsOfContact.forEach(poc => {
-            //         html += `
-            //             <div class="ml-4 mb-2 p-3 bg-gray-100 rounded-sm border border-gray-200"> <p class="text-gray-700"><strong>Name:</strong> ${poc.firstName} ${poc.lastName}</p>
-            //                 <p class="text-gray-700"><strong>Position:</strong> ${poc.position}</p>
-            //                 ${poc.email ? `<p class="text-gray-700"><strong>Email:</strong> <a href="mailto:${poc.email}" class="text-blue-600 hover:underline">${poc.email}</a></p>` : ''}
-            //                 ${poc.phone ? `<p class="text-gray-700"><strong>Phone:</strong> <a href="tel:${poc.phone}" class="text-blue-600 hover:underline">${poc.phone}</a></p>` : ''}
-            //             </div>
-            //         `;
-            //     });
-            // }
 
             html += `</div>`;
             return html;
@@ -565,25 +935,21 @@
                 mainContentDiv.className = 'bg-white p-8 rounded-lg shadow-xl w-full text-center border border-gray-200';
 
                 // Create and append the main title.
-                const title = document.createElement('h2'); // Changed to h2 for semantic hierarchy after header h1
-                // PROFESSIONAL REFORMAT: Strong, clear, neutral title without gradients
+                const title = document.createElement('h2');
                 title.className = 'text-4xl font-extrabold mb-6 text-gray-800';
                 title.textContent = 'Explore Hampton Roads Regions';
                 mainContentDiv.appendChild(title);
 
                 // Create and append the descriptive paragraph.
                 const description = document.createElement('p');
-                // PROFESSIONAL REFORMAT: Darker, more readable text
                 description.className = 'text-lg text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed';
                 description.textContent = 'Select a region below to discover essential local services and information. Use the sorting option to organize your search results.';
                 mainContentDiv.appendChild(description);
 
                 // Create the filter button.
                 const filterButton = document.createElement('button');
-                // PROFESSIONAL REFORMAT: Solid, official gray button style
                 filterButton.className = 'mb-10 px-8 py-3 bg-gray-700 text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 transition-colors duration-200 ease-in-out';
                 filterButton.textContent = isSorted ? 'Turn Off Alphabetical Sort' : 'Sort Regions Alphabetically';
-                // Add event listener to toggle sorting and re-render.
                 filterButton.onclick = () => {
                     isSorted = !isSorted;
                     if (isSorted) {
@@ -602,21 +968,18 @@
                 // Iterate over the current button data and create a button for each.
                 currentButtonData.forEach(button => {
                     const btnElement = document.createElement('button');
-                    // PROFESSIONAL REFORMAT: Clean, light buttons with subtle gray accents and shadows
                     btnElement.className = 'p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 ease-in-out text-lg font-semibold text-gray-800 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50';
                     btnElement.onclick = () => {
                         currentPage = button.id;
                         render();
                     };
 
-                    // PROFESSIONAL REFORMAT: Display button title clearly
                     const buttonTextSpan = document.createElement('span');
                     buttonTextSpan.textContent = button.title;
                     btnElement.appendChild(buttonTextSpan);
 
-                    // PROFESSIONAL REFORMAT: Simple, solid gray arrow icon
                     const arrowIcon = document.createElement('span');
-                    arrowIcon.className = 'ml-3 text-gray-600'; /* Changed from blue-600 to gray-600 */
+                    arrowIcon.className = 'ml-3 text-gray-600';
                     arrowIcon.innerHTML = `
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -627,7 +990,6 @@
                     buttonsGrid.appendChild(btnElement);
                 });
 
-                // Append all elements to the main content div.
                 mainContentDiv.appendChild(buttonsGrid);
                 appContainer.appendChild(mainContentDiv);
 
@@ -635,33 +997,27 @@
                 const selectedButton = originalButtonData.find(button => button.id === currentPage);
 
                 const detailContentDiv = document.createElement('div');
-                // PROFESSIONAL REFORMAT: Clean, elevated appearance with borders for detail pages
                 detailContentDiv.className = 'bg-white p-8 rounded-lg shadow-xl w-full text-left border border-gray-200';
 
-                // Create and append the title of the detail page.
-                const title = document.createElement('h2'); // Changed to h2
-                // PROFESSIONAL REFORMAT: Consistent neutral heading for detail pages
+                const title = document.createElement('h2');
                 title.className = 'text-3xl font-extrabold mb-6 text-gray-800 text-center';
                 title.textContent = selectedButton ? `${selectedButton.title} Services & Information` : 'Page Not Found';
                 detailContentDiv.appendChild(title);
 
-                // Create the "Back to Main Page" button.
                 const backButton = document.createElement('button');
-                // PROFESSIONAL REFORMAT: Muted, clear back button
                 backButton.className = 'px-5 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-colors duration-200 mb-8 inline-flex items-center';
                 backButton.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     Back to Regions
-                `; // Added back arrow icon
+                `;
                 backButton.onclick = () => {
                     currentPage = 'main';
                     render();
                 };
                 detailContentDiv.appendChild(backButton);
 
-                // Logic for Chesapeake's special content (dropdowns)
                 if (currentPage === 'btn3' && selectedButton.title === 'Chesapeake') {
                     const dropdownContainer = document.createElement('div');
                     dropdownContainer.className = 'mt-6';
@@ -671,11 +1027,9 @@
                             const organizations = chesapeakeData[category];
 
                             const accordionItem = document.createElement('div');
-                            // PROFESSIONAL REFORMAT: Clean, structured accordion items
                             accordionItem.className = 'mb-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200';
 
                             const accordionHeader = document.createElement('button');
-                            // PROFESSIONAL REFORMAT: Clear, distinct header for each dropdown, neutral color
                             accordionHeader.className = 'flex justify-between items-center w-full p-4 text-lg font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-t-lg transition-colors duration-200 ease-in-out';
                             accordionHeader.innerHTML = `
                                 <span>${category}</span>
@@ -724,7 +1078,6 @@
             fontAwesomeScript.crossOrigin = 'anonymous';
             document.head.appendChild(fontAwesomeScript);
 
-            // Ensure currentPage is explicitly set to 'main' at load time
             currentPage = 'main';
             render();
         });
