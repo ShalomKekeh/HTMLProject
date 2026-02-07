@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hampton Roads Community Service-Learning Sites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/norfolk.js"></script>
+    <script src="js/chesapeake.js"></script>
+    <script src="js/hampton.js"></script>
+    <script src="js/newportnews.js"></script>
+    <script src="js/portsmouth.js"></script>
+    <script src="js/suffolk.js"></script>
+    <script src="js/virginiabeach.js"></script>
+    <script src="js/westerntidewater.js"></script>
+    <style>
+        /* Custom font import - Inter is a highly readable, professional font often used in modern web design. */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            /* PROFESSIONAL REFORMAT: Changed background to white */
+            background-color: #ffffff; /* Explicitly white */
+            /* PROFESSIONAL REFORMAT: Changed primary text color to dark gray */
+            color: #343a40; /* Dark gray for good contrast */
+            line-height: 1.6; /* Improve readability of text blocks */
+        }
+        /* PROFESSIONAL REFORMAT: Removed gradient text styles. Government sites typically use solid, clear colors. */
+        .bg-clip-text { /* This class is no longer used for text styling, but kept for consistency if needed elsewhere */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Styles for dropdown content (accordion) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            /* PROFESSIONAL REFORMAT: Add subtle top border for separation when opened */
+            border-top: 1px solid #e9ecef; /* Lighter border for clean look */
+            background-color: #fdfdfd; /* Slightly off-white background for content */
+        }
+        .accordion-content.active {
+            max-height: 600px; /* Adjusted max-height to provide more space, can be tweaked */
+            transition: max-height 0.6s ease-in-out; /* Smoother transition */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-right: 1.5rem; /* More padding to separate content from scrollbar */
+        }
+
+        /* PROFESSIONAL REFORMAT: Custom scrollbar styling for Webkit browsers (Chrome, Safari, Edge) */
+        .accordion-content::-webkit-scrollbar {
+            width: 10px; /* Slightly wider scrollbar for easier interaction */
+        }
+
+        .accordion-content::-webkit-scrollbar-track {
+            background: #e9ecef; /* Light track color */
+            border-radius: 5px;
+        }
+
+        .accordion-content::-webkit-scrollbar-thumb {
+            background-color: #adb5bd; /* Muted gray thumb */
+            border-radius: 5px;
+            border: 2px solid #e9ecef; /* Border around the thumb */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4">
+
+    <header class="w-full max-w-4xl bg-white shadow-md rounded-lg mb-6 py-4 px-6 text-center border-b-4 border-blue-700">
+        <div class="flex items-center justify-center">
+            <img src="8be0bef3-53c5-45ca-b6ad-4b30fb9638dc.png" alt="Government Logo" class="h-20 w-auto object-contain">
+            <h1 class="text-3xl sm:text-4xl font-bold text-blue-800"> Hampton Roads Community Service-Learning Sites</h1>
+        </div>
+        <p class="text-base text-gray-600 mt-2">Connecting students to community service learning resources!</p>
+    </header>
+
+    <div id="app-root" class="w-full max-w-4xl min-h-[calc(100vh-200px)] flex flex-col justify-center">
+        </div>
+
+    <footer class="w-full max-w-4xl mt-10 pt-6 border-t border-gray-300 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 - Created by Shalom Kekeh. All Rights Reserved.</p>
+        <p class="mt-1">For official inquiries, contact <a href="mailto:mkekeh@odu.edu" class="text-blue-600 hover:underline">mkekeh@odu.edu</a>.</p>
+        <p class="mt-1">Disclaimer: Information provided as a directory for public guidance. Users should verify details with service providers.</p>
+    </footer>
+
+    <script>
+        // Data for the buttons and their corresponding page content
+        const originalButtonData = [
+            { id: 'btn1', title: 'Norfolk', description: 'The vibrant urban core of Hampton Roads, home to Naval Station Norfolk and a thriving arts scene.' },
+            { id: 'btn2', title: 'Virginia Beach', description: 'Known for its extensive beaches, resort strip, and diverse coastal attractions.' },
+            { id: 'btn3', title: 'Chesapeake', description: 'A large city characterized by its blend of urban, suburban, and rural areas, including parts of the Great Dismal Swamp.' },
+            { id: 'btn4', title: 'Newport News', description: 'A city rich in maritime history and shipbuilding, featuring the Newport News Shipbuilding yard.' },
+            { id: 'btn5', title: 'Hampton', description: 'A historic city with deep roots in American history, including Fort Monroe and NASA Langley Research Center.' },
+            { id: 'btn6', title: 'Suffolk', description: 'Virginia\'s largest city by land area, known for its agricultural heritage and the famous Planters Peanuts.' },
+            { id: 'btn7', title: 'Portsmouth', description: 'A historic waterfront city across from Norfolk, home to the Norfolk Naval Shipyard and a charming old town.' },
+            { id: 'btn8', title: 'Western Tidewater', description: 'Comprising Isle of Wight County, Southampton County, the City of Franklin, and the City of Suffolk, this region is known for its rich agricultural landscape, forestry, and small-town charm.' },
+        ];
+
+        let currentButtonData = [...originalButtonData];
+        let currentPage = 'main';
+        let isSorted = false;
+      
+
+
+        /**
+         * Renders a single organization's details as a list.
+         * @param {Object} org - The organization object.
+         * @returns {string} - HTML string for the organization details.
+         */
+        function renderOrganizationDetails(org) {
+            let html = `
+                <div class="bg-white p-5 rounded-md shadow-sm mb-4 border border-gray-200 text-gray-700">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">${org.name}</h4> ${org.website ? `<p class="text-sm mb-2"><strong>Website:</strong> <a href="${org.website}" target="_blank" class="text-blue-600 hover:underline">${org.website}</a></p>` : ''}
+                    <p class="mb-2"><strong>Services:</strong> ${org.services}</p>
+                    <p class="mb-2"><strong>General Type:</strong> ${org.generalType}</p>
+                    <p class="mb-2"><strong>Population Served:</strong> ${org.populationType}</p>
+                    ${org.email && org.email !== 'N/A' ? `<p class="mb-2"><strong>Email:</strong> <a href="mailto:${org.email}" class="text-blue-600 hover:underline">${org.email}</a></p>` : ''}
+                    ${org.phone && org.phone !== 'N/A' ? `<p class="mb-2"><strong>Phone:</strong> <a href="tel:${org.phone}" class="text-blue-600 hover:underline">${org.phone}</a></p>` : ''}
+                    ${org.address ? `<p class="mb-4"><strong>Address:</strong> ${org.address}</p>` : ''}
+            `;
+
+            // Social Media Links
+            const socialMediaLinks = Object.keys(org.socialMedia).map(platform => {
+                const url = org.socialMedia[platform];
+                const icon = {
+                    facebook: 'fab fa-facebook',
+                    twitter: 'fab fa-twitter',
+                    instagram: 'fab fa-instagram',
+                    linkedin: 'fab fa-linkedin'
+                }[platform] || 'fas fa-globe';
+
+                return `<a href="${url}" target="_blank" class="text-gray-600 hover:text-blue-700 mr-3"><i class="${icon}"></i> ${platform.charAt(0).toUpperCase() + platform.slice(1)}</a>`;
+            }).join('');
+
+            if (socialMediaLinks) {
+                html += `<p class="mb-4"><strong>Social Media:</strong> ${socialMediaLinks}</p>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        /**
+         * Renders the entire application UI based on the current state.
+         * This function acts as the central rendering mechanism for the single-page application.
+         */
+        function render() {
+            const appContainer = document.getElementById('app-root');
+            appContainer.innerHTML = ''; // Clear existing content
+
+            // Check if the current page is the main page.
+            if (currentPage === 'main') {
+                // Create the main content div with professional styling.
+                const mainContentDiv = document.createElement('div');
+                // PROFESSIONAL REFORMAT: Clean, elevated appearance with borders
+                mainContentDiv.className = 'bg-white p-8 rounded-lg shadow-xl w-full text-center border border-gray-200';
+
+                // Create and append the main title.
+                const title = document.createElement('h2');
+                title.className = 'text-4xl font-extrabold mb-6 text-gray-800';
+                title.textContent = 'Explore Hampton Roads Regions';
+                mainContentDiv.appendChild(title);
+
+                // Create and append the descriptive paragraph.
+                const description = document.createElement('p');
+                description.className = 'text-lg text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed';
+                description.textContent = 'Select a city or county below to explore available service-learning opportunities and community partner sites.';
+                mainContentDiv.appendChild(description);
+
+                // Create the filter button.
+                const filterButton = document.createElement('button');
+                filterButton.className = 'mb-10 px-8 py-3 bg-gray-700 text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 transition-colors duration-200 ease-in-out';
+                filterButton.textContent = isSorted ? 'Turn Off Alphabetical Sort' : 'Sort Regions alphabetically';
+                filterButton.onclick = () => {
+                    isSorted = !isSorted;
+                    if (isSorted) {
+                        currentButtonData.sort((a, b) => a.title.localeCompare(b.title));
+                    } else {
+                        currentButtonData = [...originalButtonData];
+                    }
+                    render();
+                };
+                mainContentDiv.appendChild(filterButton);
+
+                // Create a grid container for the buttons.
+                const buttonsGrid = document.createElement('div');
+                buttonsGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+                // Iterate over the current button data and create a button for each.
+                currentButtonData.forEach(button => {
+                    const btnElement = document.createElement('button');
+                    btnElement.className = 'p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 ease-in-out text-lg font-semibold text-gray-800 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50';
+                    btnElement.onclick = () => {
+                        currentPage = button.id;
+                        render();
+                    };
+
+                    const buttonTextSpan = document.createElement('span');
+                    buttonTextSpan.textContent = button.title;
+                    btnElement.appendChild(buttonTextSpan);
+
+                    const arrowIcon = document.createElement('span');
+                    arrowIcon.className = 'ml-3 text-gray-600';
+                    arrowIcon.innerHTML = `
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            `;
+                    btnElement.appendChild(arrowIcon);
+
+                    buttonsGrid.appendChild(btnElement);
+                });
+
+                mainContentDiv.appendChild(buttonsGrid);
+                appContainer.appendChild(mainContentDiv);
+
+            } else { // Detail page logic
+                const selectedButton = originalButtonData.find(button => button.id === currentPage);
+
+                const detailContentDiv = document.createElement('div');
+                detailContentDiv.className = 'bg-white p-8 rounded-lg shadow-xl w-full text-left border border-gray-200';
+
+                const title = document.createElement('h2');
+                title.className = 'text-3xl font-extrabold mb-6 text-gray-800 text-center';
+                title.textContent = selectedButton ? `${selectedButton.title} Services & Information` : 'Page Not Found';
+                detailContentDiv.appendChild(title);
+
+                const backButton = document.createElement('button');
+                backButton.className = 'px-5 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-colors duration-200 mb-8 inline-flex items-center';
+                backButton.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Back to Regions
+                        `;
+                backButton.onclick = () => {
+                    currentPage = 'main';
+                    render();
+                };
+                detailContentDiv.appendChild(backButton);
+
+                let dataToRender = null;
+                if (currentPage === 'btn3' && selectedButton.title === 'Chesapeake') {
+                    dataToRender = chesapeakeData;
+                } else if (currentPage === 'btn2' && selectedButton.title === 'Virginia Beach') {
+                    dataToRender = virginiaData;
+                } else if (currentPage === 'btn4' && selectedButton.title === 'Newport News') {
+                    dataToRender = newportNewsData;
+                } else if (currentPage === 'btn8' && selectedButton.title === 'Western Tidewater') {
+                    dataToRender = westernTidewaterData;
+                } else if (currentPage === 'btn5' && selectedButton.title === 'Hampton') {
+                    dataToRender = Hamptondata;
+                } else if (currentPage === 'btn7' && selectedButton.title === 'Portsmouth') {
+                    dataToRender = Portsmouthdata;
+                } else if (currentPage === 'btn6' && selectedButton.title === 'Suffolk') {
+                    dataToRender = Suffolkdata;
+                } else if (currentPage === 'btn1' && selectedButton.title === 'Norfolk') {
+                    dataToRender = Norfolkdata;
+                }
+
+
+
+                if (dataToRender) {
+                    const dropdownContainer = document.createElement('div');
+                    dropdownContainer.className = 'mt-6';
+
+                    for (const category in dataToRender) {
+                        if (dataToRender.hasOwnProperty(category)) {
+                            const organizations = dataToRender[category];
+
+                            const accordionItem = document.createElement('div');
+                            accordionItem.className = 'mb-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200';
+
+                            const accordionHeader = document.createElement('button');
+                            accordionHeader.className = 'flex justify-between items-center w-full p-4 text-lg font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-t-lg transition-colors duration-200 ease-in-out';
+                            accordionHeader.innerHTML = `
+                                    <span>${category}</span>
+                                    <svg class="w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                `;
+                            accordionItem.appendChild(accordionHeader);
+
+                            const accordionContent = document.createElement('div');
+                            accordionContent.className = 'accordion-content px-4 pb-4';
+                            accordionItem.appendChild(accordionContent);
+
+                            if (organizations.length > 0) {
+                                organizations.forEach(org => {
+                                    accordionContent.innerHTML += renderOrganizationDetails(org);
+                                });
+                            } else {
+                                accordionContent.innerHTML = `<p class="text-gray-600 p-4 italic">No organizations listed under "${category}" at this time. Please check back later.</p>`;
+                            }
+
+                            accordionHeader.onclick = () => {
+                                accordionContent.classList.toggle('active');
+                                const svgIcon = accordionHeader.querySelector('svg');
+                                svgIcon.classList.toggle('rotate-180');
+                            };
+
+                            dropdownContainer.appendChild(accordionItem);
+                        }
+                    }
+                    detailContentDiv.appendChild(dropdownContainer);
+
+                } else {
+                    const description = document.createElement('p');
+                    description.className = 'text-lg text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed text-center';
+                    description.textContent = selectedButton ? selectedButton.description : 'The content you are looking for does not exist.';
+                    detailContentDiv.appendChild(description);
+                }
+
+                appContainer.appendChild(detailContentDiv);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const fontAwesomeScript = document.createElement('script');
+            fontAwesomeScript.src = 'https://kit.fontawesome.com/your-font-awesome-kit-code.js'; // IMPORTANT: REPLACE WITH YOUR ACTUAL FONT AWESOME KIT CODE
+            fontAwesomeScript.crossOrigin = 'anonymous';
+            document.head.appendChild(fontAwesomeScript);
+
+            currentPage = 'main';
+            render();
+        });
+    </script>
+</body>
+</html>
+
